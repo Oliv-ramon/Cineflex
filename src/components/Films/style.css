@@ -1,0 +1,16 @@
+.tittle {
+    height: 110px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0.04em;
+    color: #293845;
+    
+    
+}
