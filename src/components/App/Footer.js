@@ -1,6 +1,11 @@
 import styled from "styled-components"
 
-function Footer({url, title}) {
+function Footer({url, title, day, date, purchaseInfo}) {
+    if (date) {
+        purchaseInfo.title = title
+        purchaseInfo.day = day
+        purchaseInfo.date = date
+    }
 
     return (
         <FilmSelected>
@@ -8,8 +13,8 @@ function Footer({url, title}) {
                 <img src={url} alt='film poster'/>
             </div>
             <p>
-                {title}{/*<br/>
-                {name ? `${day} - ${name}` : day} */}
+                {title}<br/>
+                {day ? `${day} - ${date}` : day}
             </p>
         </FilmSelected>
     )

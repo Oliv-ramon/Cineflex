@@ -9,7 +9,6 @@ function Film() {
     const {filmId} = useParams();
     const [info, setInfo] = useState(null);
 
-
     useEffect(() => {
         const promisse = get(`https://mock-api.driven.com.br/api/v4/cineflex/movies/${filmId}/showtimes`);
 
@@ -17,7 +16,7 @@ function Film() {
             console.log(data)})
     },[])
 
-    if ( info===null ) return 'carregando...'
+    if ( info === null ) return 'carregando...'
 
     return (
         <>
@@ -34,7 +33,7 @@ function Film() {
                     </li>
                 ))}
             </ul>
-            <Footer url={info.posterURL} title={info.title} showtimes={info.showtimes}/>
+            <Footer url={info.posterURL} title={info.title} />
         </>
     )
 }

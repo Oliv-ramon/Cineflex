@@ -1,27 +1,31 @@
+import { useState } from "react/cjs/react.development"
 import styled from "styled-components"
 
-function SucessPage() {
+function SucessPage({purchaseInfo, setPurchaseInfo}) {
+    const {title, day, date, cpf, name, seats} = purchaseInfo
+
+    setPurchaseInfo({...purchaseInfo})
+
     return (
         <SucessSection>
             <section className="tittle">Pedido feito<br/> com sucesso!</section>
             <PuchaseInfo>
                 <li>
                     <span>Filme e sessão</span>
-                    Enola Holmes<br/>
-                    24/06/2021 15:00
+                    {title}<br/>
+                    {date} 15:00
                 </li>
                 <li>
                     <span>Ingressos</span>
-                    Assento 15<br/>
-                    Assento 16
+                    {seats.map((seat) => <>Assento {seat}<br/></>)}
                 </li>
                 <li>
                     <span>Comprador</span>
-                    Nome: João da Silva Sauro<br/>
-                    CPF: 123.456.789-10
+                    Nome: {name}<br/>
+                    CPF: {cpf}
                 </li>
             </PuchaseInfo>
-            <Button>Voltar pra Home</Button>
+            <Button onClick={() => console.log(seats)}>Voltar pra Home</Button>
         </SucessSection>
     )
 } 
