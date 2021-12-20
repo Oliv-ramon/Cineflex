@@ -6,7 +6,7 @@ import {get, post} from "axios";
 import Subtitle from "./Subtitle";
 import Seat from "./Seat";
 
-function SeatsPage ({purchaseInfo}) {
+function SeatsPage ({purchaseInfo, setPurchaseInfo}) {
     const {sectionId} = useParams();
     const [info, setInfo] = useState(null);
     const [seatsChecked, setSeatsChecked] = useState([])
@@ -17,7 +17,9 @@ function SeatsPage ({purchaseInfo}) {
         const promisse = get(`https://mock-api.driven.com.br/api/v4/cineflex/showtimes/${sectionId}/seats`);
 
         promisse.then(({data}) => {setInfo(data)
-            console.log(data)})
+            console.log(data)
+            setPurchaseInfo({...purchaseInfo, title: data.movie.title, day: data.day.weekday, date: data.day.date})
+        })
     }, [])
 
     if (info === null) return 'carregando...'
@@ -32,19 +34,19 @@ function SeatsPage ({purchaseInfo}) {
                     </Seat>)}
             </Seats>
             <Subtitle></Subtitle>
-            <Form>section
+            <Form>
                 <label>Nome do comprador:</label>
                 <input value={name} onChange={({target: {value}}) => setName(value)} placeholder="Digite seu nome..."/>
                 <label>CPF do comprador:</label>
                 <input value={cpf} onChange={({target: {value}}) => setCpf(value)} placeholder="Digite seu CPF..."/>
             </Form>
-            <Link to={"/sucesso"} onClick={() => reserveSeats(seatsChecked, cpf, name, purchaseInfo)}>Reservar assento(s)</Link>
+            <Link to={"/sucesso"} onClick={() => reserveSeats(seatsChecked, cpf, name, purchaseInfo, setPurchaseInfo)}>Reservar assento(s)</Link>
             <Footer url={info.movie.posterURL} title={info.movie.title} day={info.day.weekday} date={info.day.date} purchaseInfo={purchaseInfo}/>   
         </Container>
     )
 }
 
-function reserveSeats(seatsChecked, cpf, name, purchaseInfo) {
+function reserveSeats(seatsChecked, cpf, name, purchaseInfo, setPurchaseInfo) {
     const promisse = post(`https://mock-api.driven.com.br/api/v4/cineflex/seats/book-many`, {
         ids: seatsChecked.map(({id}) => id),
         name,
@@ -52,9 +54,8 @@ function reserveSeats(seatsChecked, cpf, name, purchaseInfo) {
     });
 
     promisse.then(() => {console.log("OK")
-        purchaseInfo.cpf = cpf
-        purchaseInfo.name = name
-        purchaseInfo.seats = seatsChecked.map(({seat}) => seat)
+        console.log(seatsChecked)
+        setPurchaseInfo({...purchaseInfo, cpf, name, seats: seatsChecked.map(({seat}) => seat)})
     })
     promisse.catch(() => alert("Ouve algum erro ao reservar os assentos, tente novamente"))
 }

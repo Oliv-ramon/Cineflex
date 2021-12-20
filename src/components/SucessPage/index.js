@@ -1,10 +1,11 @@
-import { useState } from "react/cjs/react.development"
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-function SucessPage({purchaseInfo, setPurchaseInfo}) {
-    const {title, day, date, cpf, name, seats} = purchaseInfo
+function SucessPage({purchaseInfo}) {
+    const {title, hour, date, cpf, name, seats} = purchaseInfo
+    console.log(purchaseInfo)
 
-    setPurchaseInfo({...purchaseInfo})
+    if (!seats) return "carregando..."
 
     return (
         <SucessSection>
@@ -13,7 +14,7 @@ function SucessPage({purchaseInfo, setPurchaseInfo}) {
                 <li>
                     <span>Filme e sessão</span>
                     {title}<br/>
-                    {date} 15:00
+                    {date} {hour}
                 </li>
                 <li>
                     <span>Ingressos</span>
@@ -25,7 +26,7 @@ function SucessPage({purchaseInfo, setPurchaseInfo}) {
                     CPF: {cpf}
                 </li>
             </PuchaseInfo>
-            <Button onClick={() => console.log(seats)}>Voltar pra Home</Button>
+            <Link to="/" onClick={() => console.log(seats)}>Voltar pra Home</Link>
         </SucessSection>
     )
 } 
@@ -38,6 +39,28 @@ const SucessSection = styled.section`
         font-weight: 700;
         color: #247A6B;
         text-align: center;
+    }
+    
+    a {
+        all: unset;
+        width: 225px;
+        height: 42px;
+        margin: 20px auto 40px auto;
+
+        background-color: #E8833A;
+        border-radius: 3px;
+
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 21px;
+        letter-spacing: 0.04em;
+        text-align: center;
+        color: #fff;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 `
 
@@ -65,24 +88,6 @@ const PuchaseInfo = styled.ul`
         line-height: 28px;
         color: #293845;
     }
-`
-
-const Button = styled.button`   
-    all: unset;
-    width: 225px;
-    height: 42px;
-    margin: 20px auto 40px auto;
-
-    background-color: #E8833A;
-    border-radius: 3px;
-
-    font-family: Roboto;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 21px;
-    letter-spacing: 0.04em;
-    text-align: center;
-    color: #fff;
 `
 
 export default SucessPage

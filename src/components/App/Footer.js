@@ -1,11 +1,6 @@
 import styled from "styled-components"
 
-function Footer({url, title, day, date, purchaseInfo}) {
-    if (date) {
-        purchaseInfo.title = title
-        purchaseInfo.day = day
-        purchaseInfo.date = date
-    }
+function Footer({url, title, day, date}) {
 
     return (
         <FilmSelected>

@@ -5,7 +5,7 @@ import { useParams, Link } from 'react-router-dom';
 import Footer from "../App/Footer";
 
 
-function Film() {
+function Film({purchaseInfo, setPurchaseInfo}) {
     const {filmId} = useParams();
     const [info, setInfo] = useState(null);
 
@@ -28,7 +28,7 @@ function Film() {
                             {weekday} - {date}
                         </span>
                         <ul>
-                            {showtimes.map(({id, name}) => <Link to={`/assentos/${id}`} className="hour">{name}</Link>)}
+                            {showtimes.map(({id, name}) => <Link key={id}to={`/assentos/${id}`} className="hour" onClick={() => setPurchaseInfo({...purchaseInfo, hour: name})}>{name}</Link>)}
                         </ul>
                     </li>
                 ))}

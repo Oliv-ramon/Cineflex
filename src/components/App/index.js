@@ -17,9 +17,9 @@ function App() {
             <main>
                 <Routes>
                     <Route path="/" element={<Films/>}></Route>
-                    <Route path="/sessoes/:filmId" element={<Film/>}></Route>
-                    <Route path="/assentos/:sectionId" element={<SeatsPage purchaseInfo={purchaseInfo}/>}></Route>
-                    <Route path="/sucesso" element={<SucessPage purchaseInfo={purchaseInfo} setPurchaseInfo={setPurchaseInfo}/>}></Route>
+                    <Route path="/sessoes/:filmId" element={<Film purchaseInfo={purchaseInfo} setPurchaseInfo={setPurchaseInfo}/>}></Route>
+                    <Route path="/assentos/:sectionId" element={<SeatsPage purchaseInfo={purchaseInfo} setPurchaseInfo={setPurchaseInfo}/>}></Route>
+                    <Route path="/sucesso" element={<SucessPage purchaseInfo={purchaseInfo} />}></Route>
                 </Routes>
             </main>
         </BrowserRouter>
