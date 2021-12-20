@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom"
-import styled from "styled-components"
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 function SucessPage({purchaseInfo}) {
-    const {title, hour, date, cpf, name, seats} = purchaseInfo
-    console.log(purchaseInfo)
+    const {title, hour, date, cpf, name, seats} = purchaseInfo;
 
-    if (!seats) return "carregando..."
+    if (!seats) return "carregando...";
 
     return (
         <SucessSection>
@@ -62,7 +61,7 @@ const SucessSection = styled.section`
         justify-content: center;
         align-items: center;
     }
-`
+`;
 
 const PuchaseInfo = styled.ul`
     padding-left: 28px;
@@ -88,6 +87,6 @@ const PuchaseInfo = styled.ul`
         line-height: 28px;
         color: #293845;
     }
-`
+`;
 
-export default SucessPage
+export default SucessPage;

@@ -23,7 +23,7 @@ const Subs = styled.ul`
     padding-top: 8px;
     display: flex;
 	justify-content: space-evenly;
-`
+`;
 
 const SeatStatus = styled.li`
     display: flex;

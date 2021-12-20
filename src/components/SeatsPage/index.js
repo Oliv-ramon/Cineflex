@@ -9,20 +9,20 @@ import Seat from "./Seat";
 function SeatsPage ({purchaseInfo, setPurchaseInfo}) {
     const {sectionId} = useParams();
     const [info, setInfo] = useState(null);
-    const [seatsChecked, setSeatsChecked] = useState([])
-    const [cpf, setCpf] = useState("")
-    const [name, setName] = useState("")
+    const [seatsChecked, setSeatsChecked] = useState([]);
+    const [cpf, setCpf] = useState("");
+    const [name, setName] = useState("");
 
     useEffect(() => {
         const promisse = get(`https://mock-api.driven.com.br/api/v4/cineflex/showtimes/${sectionId}/seats`);
 
-        promisse.then(({data}) => {setInfo(data)
-            console.log(data)
-            setPurchaseInfo({...purchaseInfo, title: data.movie.title, day: data.day.weekday, date: data.day.date})
+        promisse.then(({data}) => {
+            setInfo(data);
+            setPurchaseInfo({...purchaseInfo, title: data.movie.title, day: data.day.weekday, date: data.day.date});
         })
-    }, [])
+    }, []);
 
-    if (info === null) return 'carregando...'
+    if (info === null) return 'carregando...';
         
     return (
         <Container className="container">    
@@ -53,8 +53,7 @@ function reserveSeats(seatsChecked, cpf, name, purchaseInfo, setPurchaseInfo) {
         cpf,
     });
 
-    promisse.then(() => {console.log("OK")
-        console.log(seatsChecked)
+    promisse.then(() => {
         setPurchaseInfo({...purchaseInfo, cpf, name, seats: seatsChecked.map(({seat}) => seat)})
     })
     promisse.catch(() => alert("Ouve algum erro ao reservar os assentos, tente novamente"))
@@ -67,7 +66,7 @@ const Seats = styled.ul`
 	justify-content: space-evenly;
     flex-wrap: wrap;
     gap: 7px;
-`
+`;
 
 const Form = styled.form`
     padding: 41px 24px 34px 24px;
@@ -100,7 +99,7 @@ const Form = styled.form`
             line-height: 21px;
         }
     }
-`
+`;
 
 const Container = styled.section`
     padding-bottom: 147px;
@@ -125,6 +124,6 @@ const Container = styled.section`
         align-items: center;
         justify-content: center;
     }
-` 
+`;
 
-export default SeatsPage
+export default SeatsPage;

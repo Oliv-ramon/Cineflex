@@ -6,15 +6,15 @@ function Seat({id, isAvailable, checkedState: {seatsChecked, setSeatsChecked}, c
     const [selected, setSelected] = useState(false);
 
     function selectSeat({classList, innerText: seat}) {
-        const [id]  = [...classList].slice(-1)
+        const [id]  = [...classList].slice(-1);
 
         if (isAvailable) {
             if (!selected) {
-                setSelected(true)
-                setSeatsChecked([...seatsChecked, {id, seat}])
+                setSelected(true);
+                setSeatsChecked([...seatsChecked, {id, seat}]);
             } else {
-                setSelected(false)
-                setSeatsChecked(seatsChecked.filter((s) => s !== id))
+                setSelected(false);
+                setSeatsChecked(seatsChecked.filter((s) => s !== id));
             }
         } else {
             alert("Esse assento não está disponível")

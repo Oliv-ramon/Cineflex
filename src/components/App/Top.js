@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 function Top () {
     return (
@@ -9,4 +9,4 @@ function Top () {
     )
 }
 
-export default Top
+export default Top;

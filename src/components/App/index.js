@@ -8,7 +8,7 @@ import SucessPage from "../SucessPage";
 import "./style.css";
 
 function App() {
-    let [purchaseInfo, setPurchaseInfo] = useState({})
+    const [purchaseInfo, setPurchaseInfo] = useState({});
 
     return (
         
@@ -26,4 +26,4 @@ function App() {
     )
 }
 
-export default App
+export default App;

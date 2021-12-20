@@ -12,11 +12,10 @@ function Film({purchaseInfo, setPurchaseInfo}) {
     useEffect(() => {
         const promisse = get(`https://mock-api.driven.com.br/api/v4/cineflex/movies/${filmId}/showtimes`);
 
-        promisse.then(({data}) => {setInfo(data)
-            console.log(data)})
-    },[])
+        promisse.then(({data}) => setInfo(data));
+    },[]);
 
-    if ( info === null ) return 'carregando...'
+    if ( info === null ) return 'carregando...';
 
     return (
         <>
@@ -38,4 +37,4 @@ function Film({purchaseInfo, setPurchaseInfo}) {
     )
 }
 
-export default Film
+export default Film;

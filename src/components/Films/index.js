@@ -2,20 +2,20 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import {get} from 'axios';
 import styled from "styled-components";
-import "./style.css"
+import "./style.css";
 
 
 function Films() {
-    const [filmList, setFilmList] = useState([])
+    const [filmList, setFilmList] = useState([]);
 
     useEffect(() => {
-        const promisse = get("https://mock-api.driven.com.br/api/v4/cineflex/movies")
+        const promisse = get("https://mock-api.driven.com.br/api/v4/cineflex/movies");
 
-        promisse.then(({data}) => setFilmList(data))
+        promisse.then(({data}) => setFilmList(data));
     }, [])
 
     if (!filmList) {
-        return "...carregando"
+        return "...carregando";
     } else {
         return (
             <>    
@@ -56,4 +56,4 @@ const FilmsList = styled.section`
     }
 `
 
-export default Films
+export default Films;

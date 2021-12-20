@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 function Footer({url, title, day, date}) {
 
@@ -56,6 +56,6 @@ const FilmSelected = styled.footer`
         line-height: 30px;
         color: #293845;
     }
-`
+`;
 
-export default Footer
+export default Footer;

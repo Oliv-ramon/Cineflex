@@ -26,3 +26,7 @@ main, .container {
     
     color: #E8833A;
 } 
+
+a {
+    cursor: pointer;
+}
