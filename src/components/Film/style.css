@@ -1,4 +1,6 @@
 .times-list {
+    padding-bottom: 147px;
+
     display: flex;
     flex-direction: column;
     align-items: space-between;

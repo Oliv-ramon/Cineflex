@@ -103,7 +103,7 @@ const Form = styled.form`
 `
 
 const Container = styled.section`
-    padding: 0;
+    padding-bottom: 147px;
 
     a {
         all: unset;
